@@ -4,8 +4,6 @@ import (
 	"fmt"
 
 	"go.uber.org/zap"
-
-	"github.com/go-kratos/kratos/v2/log"
 )
 
 var _ Logger = (*ZapLogger)(nil)
@@ -27,7 +25,7 @@ func ZapWithMessageKey(key string) ZapOption {
 func NewZapLogger(zlog *zap.Logger) *ZapLogger {
 	return &ZapLogger{
 		log:    zlog,
-		msgKey: log.DefaultMessageKey,
+		msgKey: DefaultMessageKey,
 	}
 }
 
