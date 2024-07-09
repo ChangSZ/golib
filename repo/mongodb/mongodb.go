@@ -7,13 +7,13 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ChangSZ/golib/log"
-
 	"github.com/tidwall/gjson"
 	"go.mongodb.org/mongo-driver/event"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"go.mongodb.org/mongo-driver/mongo/readpref"
+
+	"github.com/ChangSZ/golib/log"
 )
 
 var _ Repo = (*dbRepo)(nil)
