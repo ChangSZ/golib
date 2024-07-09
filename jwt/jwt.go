@@ -78,14 +78,14 @@ func (j *JwtTokenUtil) ValidateToken(tokenString string, username string) error 
 	if user != username {
 		return fmt.Errorf("token与用户不一致")
 	}
-	if j.isTokenExpired(tokenString) {
+	if j.TokenExpired(tokenString) {
 		return jwt.ErrTokenExpired
 	}
 	return nil
 }
 
-// isTokenExpired 判断token是否已经失效
-func (j *JwtTokenUtil) isTokenExpired(tokenString string) bool {
+// TokenExpired 判断token是否已经失效
+func (j *JwtTokenUtil) TokenExpired(tokenString string) bool {
 	expiration := j.getExpiredDateFromToken(tokenString)
 	return time.Now().After(expiration)
 }
@@ -132,7 +132,7 @@ func (j *JwtTokenUtil) RefreshHeadToken(oldToken string, interval int) (string, 
 	}
 
 	// 检查令牌是否过期
-	if j.isTokenExpired(oldToken) {
+	if j.TokenExpired(oldToken) {
 		return oldToken, jwt.ErrTokenExpired
 	}
 
